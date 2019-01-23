@@ -43,20 +43,21 @@ export default class Player extends Component {
           onProgress={this.setTime.bind(this)}
           style={styles.videoElement}
         />
-        <PlayButton
-          onPressPlay={() => this.setState({ paused: false })}
-          onPressPause={() => this.setState({ paused: true })}
-          paused={this.state.paused}
-          style={{ position: 'absolute' }}
-        />
-        <View style={styles.bottom}>
-          <ProgressBar
-            onSeek={this.seek.bind(this)}
-            videoLength={this.state.totalLength}
-            currentPosition={this.state.currentPosition}
-            onSlidingStart={() => this.setState({ paused: true })}
+        <View style={styles.overlay}>
+          <PlayButton
+            onPressPlay={() => this.setState({ paused: false })}
+            onPressPause={() => this.setState({ paused: true })}
+            paused={this.state.paused}
           />
-          <FullscreenButton />
+          <View style={styles.bottom}>
+            <ProgressBar
+              onSeek={this.seek.bind(this)}
+              videoLength={this.state.totalLength}
+              currentPosition={this.state.currentPosition}
+              onSlidingStart={() => this.setState({ paused: true })}
+            />
+            <FullscreenButton />
+          </View>
         </View>
       </View>
     )
@@ -70,7 +71,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'stretch',
   },
-  videoElement: {
+  overlay: {
+    position: 'absolute',
+    height: '100%',
+    width: '100%'
+  },
+    videoElement: {
     flex: 1,
   },
   bottom: {
