@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, TouchableOpacity, Image } from 'react-native'
 
-const ProgressBar = props => (
+const FullscreenButton = props => (
   <TouchableOpacity style={styles.container} onPress={this._onPressButton}>
     <Image
       style={styles.image}
@@ -21,4 +21,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default ProgressBar
+export default FullscreenButton
