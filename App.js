@@ -1,7 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import Player from './components/Player'
-import { Constants } from 'expo'
 
 export default class App extends React.Component {
   render() {
@@ -19,7 +18,6 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: Constants.statusBarHeight,
     flex: 1,
   }
 });
