@@ -1,13 +1,23 @@
 import React from 'react'
-import { StyleSheet, Image, TouchableOpacity } from 'react-native'
+import { View, StyleSheet, Image, TouchableOpacity } from 'react-native'
 
-const PlayButton = props => (
-  <TouchableOpacity style={styles.container} onPress={this._onPressButton}>
-    <Image
-      style={styles.image}
-      source={require('./img/play-button.png')}
-    />
-  </TouchableOpacity>
+const PlayButton = ({ paused, onPressPlay, onPressPause }) => (
+  <View style={styles.container}>
+    {!paused ?
+      <TouchableOpacity onPress={onPressPause}>
+        <Image
+          style={styles.image}
+          source={require('./img/pause-button.png')}
+        />
+      </TouchableOpacity> :
+      <TouchableOpacity onPress={onPressPlay}>
+        <Image
+          style={styles.image}
+          source={require('./img/play-button.png')}
+        />
+      </TouchableOpacity>
+    }
+  </View>
 )
 
 const styles = StyleSheet.create({
