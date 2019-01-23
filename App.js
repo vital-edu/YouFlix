@@ -8,10 +8,10 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <Player/>
-        <View style={{flex:1, backgroundColor:"yellow"}}></View>
+        {/* <View style={{flex:1, backgroundColor:"yellow"}}></View>
         <View style={{flex:1, backgroundColor:"blue"}}></View>
         <View style={{flex:1, backgroundColor:"orange"}}></View>
-        <View style={{flex:1, backgroundColor:"purple"}}></View>
+        <View style={{flex:1, backgroundColor:"purple"}}></View> */}
       </View>
     );
   }
