@@ -11,9 +11,9 @@ const bufferConfig = {
 
 const maxLength = 32
 
-export default class PlaylistItem extends React.Component {
-  constructor(props) {
-    super(props)
+export default class PlaylistItem extends React.PureComponent {
+  onPress = () => {
+    this.props.onPressItem(this.props.id);
   }
 
   render() {
@@ -22,7 +22,7 @@ export default class PlaylistItem extends React.Component {
       this.props.title
 
     return (
-      <TouchableOpacity style={styles.container}>
+      <TouchableOpacity style={styles.container} onPress={this.onPress}>
         <Video
           source={{ uri: this.props.url }}
           ref='videoElement'
@@ -51,5 +51,5 @@ const styles = StyleSheet.create({
   },
   title: {
     color: 'black',
-  }
+  },
 });
