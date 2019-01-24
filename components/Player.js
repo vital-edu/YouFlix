@@ -28,7 +28,14 @@ export default class Player extends Component {
     this.refs.videoElement && this.refs.videoElement.seek(time)
     this.setState({
       currentPosition: time,
-      paused: false,
+    })
+  }
+
+  onEnd() {
+    this.refs.videoElement.seek(0)
+    this.setState({
+      currentPosition: 0,
+      paused: true,
     })
   }
 
@@ -39,6 +46,7 @@ export default class Player extends Component {
           source={require('./sample/broadchurch.mp4')}
           ref='videoElement'
           paused={this.state.paused}
+          onEnd={this.onEnd.bind(this)}
           onLoad={this.setDuration.bind(this)}
           onProgress={this.setTime.bind(this)}
           style={styles.videoElement}
@@ -66,7 +74,7 @@ export default class Player extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'red',
+    backgroundColor: 'black',
     flex: 2,
     justifyContent: 'space-between',
     alignItems: 'stretch',
@@ -76,7 +84,7 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%'
   },
-    videoElement: {
+  videoElement: {
     flex: 1,
   },
   bottom: {
@@ -85,5 +93,5 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
     justifyContent: 'space-around',
-  }
+  },
 })
