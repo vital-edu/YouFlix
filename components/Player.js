@@ -43,7 +43,7 @@ export default class Player extends Component {
     return (
       <View style={styles.container}>
         <Video
-          source={require('./sample/broadchurch.mp4')}
+          source={{uri: this.props.videoUrl}}
           ref='videoElement'
           paused={this.state.paused}
           onEnd={this.onEnd.bind(this)}
