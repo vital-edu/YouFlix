@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, StyleSheet, TouchableOpacity, Dimensions } from 'react-native'
 import PlayButton from './PlayButton'
 import ProgressBar from './ProgressBar'
 import FullscreenButton from './FullscreenButton'
@@ -13,9 +13,12 @@ export default class Player extends Component {
       totalLength: 0,
       currentPosition: 0,
       visible: true,
+      fullscreen: false,
     }
     this.interval = 0
+    this.video = Video
   }
+
 
   componentDidMount() {
     this.setState({ visible: true })
@@ -54,14 +57,14 @@ export default class Player extends Component {
 
   seek(time) {
     time = Math.round(time)
-    this.refs.videoElement && this.refs.videoElement.seek(time)
+    this.player && this.player.seek(time)
     this.setState({
       currentPosition: time,
     })
   }
 
   onEnd() {
-    this.refs.videoElement.seek(0)
+    this.player.seek(0)
     this.setState({
       currentPosition: 0,
       paused: true,
@@ -74,6 +77,16 @@ export default class Player extends Component {
     })
   }
 
+  toggleFullscreen() {
+    this.setState(prevState => {
+      prevState.fullscreen ?
+        this.player.dismissFullscreenPlayer() :
+        this.player.presentFullscreenPlayer()
+
+      return { fullscreen: !prevState.fullscreen }
+    })
+  }
+
   render() {
     const bottomBar = (
       <View style={styles.bottom}>
@@ -83,7 +96,9 @@ export default class Player extends Component {
           currentPosition={this.state.currentPosition}
           onSlidingStart={() => this.setState({ paused: true })}
         />
-        <FullscreenButton />
+        <FullscreenButton
+          onFullscreen={this.toggleFullscreen.bind(this)}
+        />
       </View>
     )
     const playButton = (
@@ -101,16 +116,16 @@ export default class Player extends Component {
     )
 
     return (
-      <View style={styles.container}>
+      <View style={this.state.fullscreen ? styles.fullscreen : styles.container }>
         <Video
           source={{ uri: this.props.videoUrl }}
-          ref='videoElement'
+          ref={(ref) => this.player = ref}
           paused={this.state.paused}
           onEnd={this.onEnd.bind(this)}
           onLoad={this.setDuration.bind(this)}
           onProgress={this.setTime.bind(this)}
           style={styles.videoElement}
-          resizeMode='stretch'
+          resizeMode={this.state.fullscreen ? 'center' : 'stretch'}
         />
 
         <View style={styles.overlay}>
@@ -145,4 +160,15 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     justifyContent: 'space-around',
   },
+  fullscreen: {
+    top: 0,
+    right: 0,
+    position: 'relative',
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+    backgroundColor: 'black',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    alignItems: 'center'
+  }
 })

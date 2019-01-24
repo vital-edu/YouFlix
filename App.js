@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, TouchableOpacity, View, Button } from 'react-native'
+import { StyleSheet, View, ScrollView } from 'react-native'
 import Player from './components/Player'
 import VideoInfo from './components/VideoInfo'
 import Playlist from './components/Playlist'
@@ -24,7 +24,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <Player videoUrl={this.state.currentVideo.url} />
         <VideoInfo
           title={this.state.currentVideo.title}
@@ -36,7 +36,7 @@ export default class App extends React.Component {
           videos={this.state.videos}
           onPress={this.onSelectVideo}
         />
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -44,6 +44,6 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'red',
+    backgroundColor: 'black',
   },
 });
