@@ -19,7 +19,6 @@ export default class App extends React.Component {
           author={currentVideo.author}
         />
         <View style={{flex:1, backgroundColor:"blue"}}></View>
-        <View style={{ flex: 1, backgroundColor: "orange" }}></View>
         <View style={{ flex: 1, backgroundColor: "purple" }}></View>
       </View>
     );

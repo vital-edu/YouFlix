@@ -3,7 +3,7 @@ import { Image, View, Text, StyleSheet } from 'react-native'
 
 const VideoInfo = props => (
   <View style={styles.container}>
-    <View style={styles.videoInfo}>
+    <View style={styles.box}>
       <Text style={styles.title}>
         {props.title}
       </Text>
@@ -24,20 +24,26 @@ const VideoInfo = props => (
         </View>
       </View>
     </View>
-    <View>
-      <View styles={{ backgroundColor: 'blue' }}></View>
+    <View style={[styles.box, styles.imageWithText, styles.authorInfo]}>
+      <Image
+        source={{uri: props.author.photo}}
+        style={styles.photo}
+      />
+      <Text style={styles.authorName}>{props.author.name}</Text>
     </View>
   </View>
 )
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 2,
     backgroundColor: '#f8fbfd',
   },
-  videoInfo: {
-    flex: 1,
-    margin: 10,
+  box: {
+    flex: 0,
+    marginTop: 10,
+    marginLeft: 10,
+    marginRight: 10,
     paddingLeft: 10,
     paddingRight: 10,
     paddingBottom: 15,
@@ -49,14 +55,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 18,
     color: 'black',
-    paddingBottom: 10,
   },
   stats: {
-    flex: 1,
+    marginTop: 10,
     flexDirection: 'row',
   },
   imageWithText: {
-    flex: 0,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignSelf: 'center',
@@ -64,7 +68,7 @@ const styles = StyleSheet.create({
   },
   iconText: {
     flex: 0,
-    alignSelf: 'baseline',
+    alignSelf: 'center',
   },
   icon: {
     alignSelf: 'center',
@@ -75,7 +79,21 @@ const styles = StyleSheet.create({
   likes: {
     height: 14,
     width: 14,
-  }
+  },
+  authorInfo: {
+    alignSelf: 'stretch'
+  },
+  photo: {
+    marginRight: 10,
+    height: 45,
+    width: 45,
+    borderRadius: 50,
+  },
+  authorName: {
+    flex: 0,
+    alignSelf: 'center',
+    fontWeight: 'bold',
+  },
 });
 
 export default VideoInfo
