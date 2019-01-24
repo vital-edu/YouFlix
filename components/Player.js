@@ -163,12 +163,11 @@ const styles = StyleSheet.create({
   fullscreen: {
     top: 0,
     right: 0,
+    flexDirection: 'row',
     position: 'relative',
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
     backgroundColor: 'black',
-    justifyContent: 'center',
-    alignSelf: 'center',
-    alignItems: 'center'
+    justifyContent: 'space-around',
   }
 })
