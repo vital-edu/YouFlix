@@ -75,7 +75,7 @@ export default class Player extends Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'black',
-    flex: 2,
+    flex: 3,
     justifyContent: 'space-between',
     alignItems: 'stretch',
   },

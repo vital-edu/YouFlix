@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import Player from './components/Player'
 import VideoInfo from './components/VideoInfo'
+import Playlist from './components/Playlist'
 import { VIDEOS } from './data.js'
 
 export default class App extends React.Component {
@@ -18,8 +19,9 @@ export default class App extends React.Component {
           likes={currentVideo.likes}
           author={currentVideo.author}
         />
-        <View style={{flex:1, backgroundColor:"blue"}}></View>
-        <View style={{ flex: 1, backgroundColor: "purple" }}></View>
+        <Playlist
+          videos={VIDEOS}
+        />
       </View>
     );
   }
@@ -28,5 +30,6 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'red',
   }
 });

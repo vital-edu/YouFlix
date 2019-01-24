@@ -36,7 +36,7 @@ const VideoInfo = props => (
 
 const styles = StyleSheet.create({
   container: {
-    flex: 2,
+    flex: 0,
     backgroundColor: '#f8fbfd',
   },
   box: {

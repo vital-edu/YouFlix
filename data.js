@@ -1,5 +1,6 @@
 export const VIDEOS = [
   {
+    id: '0',
     title: 'iOS beautiful swipe animation',
     views: 1534,
     likes: 6253,
@@ -10,6 +11,7 @@ export const VIDEOS = [
     url: 'https://dms.licdn.com/playback/C5605AQGMV5Brz7RcRg/b0e2aca381dc49eda87c7f0bd1c3453a/feedshare-mp4_3300-captions-thumbnails/1507940147251-drlcss?e=1548396000&v=beta&t=WoRQJkj6Yn454z6_Iozz0zw_8XEAbOPlWdeMPNs4tzM',
   },
   {
+    id: '1',
     title: 'Machine Learning - Estacionamento proibido',
     views: 18222,
     likes: 606,
@@ -20,6 +22,7 @@ export const VIDEOS = [
     url: 'https://dms.licdn.com/playback/C4E05AQHMGcHTuL4vUA/db7dbb8faa70494fbf2bd08da43cad8e/feedshare-mp4_3300-captions-thumbnails/1507940147251-drlcss?e=1548396000&v=beta&t=3lrRltQS_2cDvxFjjGpVoAT3KvY2q8nbEdXyxEz1Xcg',
   },
   {
+    id: '2',
     title: 'iOS beautiful swipe animation',
     views: 1534,
     likes: 6253,
